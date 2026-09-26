@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zain Ali — Amazon Product & Keyword Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #10151F;
+    --ink-2: #171E2B;
+    --paper: #E8E4D9;
+    --paper-dim: #A9A79E;
+    --amber: #D9A441;
+    --teal: #4A9B8E;
+    --line: rgba(232,228,217,0.14);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { overflow-x: hidden; }
+  a { color: inherit; }
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  header nav a {
+    text-decoration: none;
+    color: var(--paper-dim);
+    font-size: 0.92rem;
+    margin-left: 28px;
+    transition: color 0.2s ease;
+  }
+  header nav a:hover { color: var(--paper); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+    padding: 90px 0 80px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height: 1.12;
+    margin: 0 0 26px;
+    max-width: 15ch;
+  }
+  .hero p.lede {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--paper-dim);
+    max-width: 44ch;
+    margin: 0 0 34px;
+  }
+  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--amber); color: var(--ink); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--paper); }
+
+  .chart-card {
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px 22px 18px;
+  }
+  .chart-card .cap {
+    font-size: 0.8rem;
+    color: var(--paper-dim);
+    margin-bottom: 4px;
+  }
+  .chart-card .num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+
+  section.services {
+    padding: 70px 0;
+    border-top: 1px solid var(--line);
+  }
+  section.services h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 0 0 38px;
+    max-width: 22ch;
+  }
+  .service-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .service {
+    padding: 26px 26px 26px 0;
+    border-left: 1px solid var(--line);
+    padding-left: 26px;
+  }
+  .service:first-child { border-left: none; padding-left: 0; }
+  .service h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: var(--teal);
+  }
+  .service p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--paper-dim);
+    margin: 0;
+  }
+
+  section.approach {
+    padding: 70px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 48px;
+  }
+  section.approach h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .steps { display: flex; flex-direction: column; gap: 26px; }
+  .step { display: flex; gap: 18px; }
+  .step .mark {
+    font-family: 'Fraunces', serif;
+    color: var(--amber);
+    font-size: 1.1rem;
+    min-width: 28px;
+  }
+  .step p { margin: 0; color: var(--paper-dim); font-size: 0.95rem; line-height: 1.6; }
+  .step strong { color: var(--paper); font-weight: 600; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 46px 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  footer h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0 0 8px;
+  }
+  footer p { color: var(--paper-dim); margin: 0; font-size: 0.92rem; }
+  footer .contact { text-align: right; }
+  footer .contact a { text-decoration: none; color: var(--amber); font-size: 0.95rem; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 56px 0 50px; }
+    .service-list { grid-template-columns: 1fr; }
+    .service { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 22px; }
+    .service:first-child { border-top: none; padding-top: 0; }
+    section.approach { grid-template-columns: 1fr; }
+    header nav a { margin-left: 16px; }
+    footer { flex-direction: column; }
+    footer .contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">Zain Ali</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Find the product before your competitors do.</h1>
+      <p class="lede">I help Amazon sellers cut through 16,000+ keyword variants and dozens of near-identical listings to find the one gap worth building a product around.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#services">See what I do</a>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cap">Sample: organic rank movement, 60 days</div>
+      <div class="num">#41 → #6</div>
+      <svg viewBox="0 0 300 120" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="0,95 40,90 80,78 120,80 160,55 200,48 240,22 280,14"
+          fill="none" stroke="#4A9B8E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="280" cy="14" r="4" fill="#D9A441"/>
+      </svg>
+    </div>
+  </div>
+
+  <section class="services" id="services">
+    <h2>Where most of the work actually happens</h2>
+    <div class="service-list">
+      <div class="service">
+        <h3>Keyword Research</h3>
+        <p>Full-funnel keyword mapping — search volume, organic vs. paid split, and which terms your listing is quietly losing.</p>
+      </div>
+      <div class="service">
+        <h3>Product Research</h3>
+        <p>Demand and competition scoring on shortlisted product ideas, so you commit inventory to something with real headroom.</p>
+      </div>
+      <div class="service">
+        <h3>Listing Diagnostics</h3>
+        <p>A plain read of why a listing isn't converting — title, backend terms, and review gaps against the top 10.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="approach" id="approach">
+    <h2>How a project usually runs</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="mark">01</span>
+        <p><strong>Pull the data.</strong> Reverse ASIN, keyword distribution, and revenue benchmarks for your niche.</p>
+      </div>
+      <div class="step">
+        <span class="mark">02</span>
+        <p><strong>Find the gap.</strong> Where competitors are thin on reviews, mis-titled, or missing a search term entirely.</p>
+      </div>
+      <div class="step">
+        <span class="mark">03</span>
+        <p><strong>Hand you a plan.</strong> A short, specific list of what to fix or build next — no 40-page deck.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div>
+      <h2>Let's look at your niche.</h2>
+      <p>Based in Pakistan · working with Amazon sellers globally.</p>
+    </div>
+    <div class="contact">
+      <p><a href="mailto:zain.impulsusads@gmail.com">zain.impulsusads@gmail.com</a></p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
